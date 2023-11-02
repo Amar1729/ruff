@@ -1762,7 +1762,7 @@ fn missing_args(checker: &mut Checker, docstring: &Docstring, docstrings_args: &
 static GOOGLE_ARGS_REGEX: Lazy<Regex> =
     Lazy::new(|| Regex::new(r"^\s*(\*?\*?\w+)\s*(\(.*?\))?\s*:(\r\n|\n)?\s*.+").unwrap());
 
-fn args_section(context: &SectionContext) -> FxHashSet<String> {
+pub(crate) fn args_section(context: &SectionContext) -> FxHashSet<String> {
     let mut following_lines = context.following_lines().peekable();
     let Some(first_line) = following_lines.next() else {
         return FxHashSet::default();

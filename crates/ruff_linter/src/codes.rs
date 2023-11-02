@@ -948,6 +948,9 @@ pub fn code_to_rule(linter: Linter, code: &str) -> Option<(RuleGroup, Rule)> {
         (Flake8Logging, "007") => (RuleGroup::Preview, rules::flake8_logging::rules::ExceptionWithoutExcInfo),
         (Flake8Logging, "009") => (RuleGroup::Preview, rules::flake8_logging::rules::UndocumentedWarn),
 
+        // darglint
+        (Darglint, "102") => (RuleGroup::Preview, rules::darglint::rules::ExcessParam),
+
         _ => return None,
     })
 }

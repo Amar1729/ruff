@@ -202,6 +202,9 @@ pub enum Linter {
     /// [flake8-logging](https://pypi.org/project/flake8-logging/)
     #[prefix = "LOG"]
     Flake8Logging,
+    /// [darglint](https://github.com/terrencepreilly/darglint)
+    #[prefix = "DAR"]
+    Darglint,
     /// Ruff-specific rules
     #[prefix = "RUF"]
     Ruff,

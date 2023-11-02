@@ -1,0 +1,29 @@
+---
+source: crates/ruff_linter/src/rules/darglint/mod.rs
+---
+DAR102.py:7:5: DAR102 Missing docstring parameter in the function `foo`: `b`
+  |
+7 | def foo(a):
+  |     ^^^ DAR102
+8 |     """
+9 |     Args:
+  |
+
+DAR102.py:16:5: DAR102 Missing docstring parameters in the function `bar`: `y`, `_z`
+   |
+16 | def bar(x):
+   |     ^^^ DAR102
+17 |     """
+18 |     Args:
+   |
+
+DAR102.py:26:9: DAR102 Missing docstring parameter in the function `method`: `b`
+   |
+25 | class A:
+26 |     def method(self, a):
+   |         ^^^^^^ DAR102
+27 |         """
+28 |         Args:
+   |
+
+

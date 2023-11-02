@@ -7,7 +7,7 @@ use crate::checkers::ast::Checker;
 use crate::codes::Rule;
 use crate::docstrings::Docstring;
 use crate::fs::relativize_path;
-use crate::rules::{flake8_annotations, flake8_pyi, pydocstyle};
+use crate::rules::{darglint, flake8_annotations, flake8_pyi, pydocstyle};
 use crate::{docstrings, warn_user};
 
 /// Run lint rules over all [`Definition`] nodes in the [`SemanticModel`].
@@ -44,6 +44,7 @@ pub(crate) fn definitions(checker: &mut Checker) {
         Rule::EndsInPeriod,
         Rule::EndsInPunctuation,
         Rule::EscapeSequenceInDocstring,
+        Rule::ExcessParam,
         Rule::FirstLineCapitalized,
         Rule::FitsOnOneLine,
         Rule::IndentWithSpaces,
@@ -286,6 +287,9 @@ pub(crate) fn definitions(checker: &mut Checker) {
                     &docstring,
                     checker.settings.pydocstyle.convention.as_ref(),
                 );
+            }
+            if checker.enabled(Rule::ExcessParam) {
+                darglint::rules::excess_param(checker, &docstring);
             }
         }
     }
